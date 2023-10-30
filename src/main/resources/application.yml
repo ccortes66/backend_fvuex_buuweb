@@ -1,0 +1,20 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://criss:ja123456@cluster0.jabx9s3.mongodb.net/buuweb?retryWrites=true&w=majority
+
+
+server:
+  port: 8081
+  
+  servlet:
+    context-path: /api/v1
+    
+  error:
+    include-stacktrace: never
+
+gg:
+  jte:
+    templateLocation: src/main/resources/templates
+    templateSuffix: .jte
+    developmentMode: true
