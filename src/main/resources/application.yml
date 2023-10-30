@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://criss:ja123456@cluster0.jabx9s3.mongodb.net/buuweb?retryWrites=true&w=majority
+      uri: ${URI_MONGODB}
 
 
 server:
