@@ -1,10 +1,12 @@
 package com.vuex.example.vuex.persistences.DTO.User;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record RegisterUser(
     @NotBlank
+    @Email
     String email,
     @Size(min = 8, max = 20)
     String password,

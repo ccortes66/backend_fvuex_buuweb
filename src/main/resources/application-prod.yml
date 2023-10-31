@@ -6,7 +6,7 @@ spring:
 
 
 server:
-  port: 8081
+  port: 8080
   
   servlet:
     context-path: /api/v1
@@ -16,6 +16,5 @@ server:
 
 gg:
   jte:
-    templateLocation: src/main/resources/templates
-    templateSuffix: .jte
-    developmentMode: true
+    developmentMode: false
+    usePrecompiledTemplates: true

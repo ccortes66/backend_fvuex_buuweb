@@ -1,5 +1,6 @@
 package com.vuex.example.vuex.service;
 
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,8 +25,13 @@ public class UserService implements UserDetailsService
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
-    {
-        return repository.findById(username).get();
+    {   
+        UserDocument userDocument = repository.findById(username).get();
+        return User.builder()
+                   .username(userDocument.getEmail())
+                   .password(userDocument.getPassword())
+                   .roles(userDocument.getRole())
+                   .build();
     }
     
     @Transactional

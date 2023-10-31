@@ -40,7 +40,6 @@ public class LoginController
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody @Valid LoginUser user)
     {   
-        
         ResponseCookie cookie = ResponseCookie.from("refeshToken", tokenService.createRefreshtoken(user))
                                 .path("/")
                                 .domain("localhost")
@@ -55,7 +54,8 @@ public class LoginController
 
     @GetMapping("/refesh")
     public ResponseEntity<TokenResponse> woAmI(@CookieValue(name = "refeshToken") String token)
-    {
+    {   
+        System.out.println(token);
         return ResponseEntity.ok(tokenService.createPrincipaltoken(token));
         
     }
@@ -63,8 +63,13 @@ public class LoginController
     @GetMapping("/logout")
     public ResponseEntity<Void> logoutRefreshToken()
     {   
-        ResponseCookie deleteCookie = ResponseCookie.from("refeshToken", null) 
-                                      .build(); 
+        ResponseCookie deleteCookie = ResponseCookie.from("refeshToken", "")
+                                        .path("/")
+                                        .domain("localhost")
+                                        .secure(false)
+                                        .httpOnly(true)
+                                        .maxAge(0)
+                                        .build();
         return ResponseEntity.ok()
                              .header(HttpHeaders.SET_COOKIE, deleteCookie.toString())
                              .build();

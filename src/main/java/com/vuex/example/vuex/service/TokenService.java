@@ -55,6 +55,15 @@ public class TokenService
       return new TokenResponse(token, Duration.ofMinutes(15).toMillis());
    }
 
+   public String createPrincipaltokenFilter(String outToken)
+   {  
+     verifiRefresToken(outToken); 
+     return TokenHelper.createToken(new CreateToken(getRefeshEmail(outToken), 
+                                                    principalAlgorithm, 
+                                                    Duration.ofMinutes(15), 
+                                                     "principal token"));
+   }
+
    public Boolean verifiPrincipalToken(String token)
    {
       return TokenHelper.verifyToken(token, principalAlgorithm);
