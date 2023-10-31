@@ -18,6 +18,7 @@ import com.vuex.example.vuex.persistences.DTO.Links.ShowLinks;
 import com.vuex.example.vuex.persistences.DTO.Links.UpdateLink;
 import com.vuex.example.vuex.service.LinkService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/links")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class LinksController 
 {   
     private final LinkService service;

@@ -54,6 +54,12 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- documentacion open api  -->
+		<dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
+        </dependency>
 		<dependency>
 			<groupId>gg.jte</groupId>
 			<artifactId>jte</artifactId>

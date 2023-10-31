@@ -44,7 +44,8 @@ public class MiddlewareFiler extends OncePerRequestFilter
           headerAutorization.ifPresent((data) ->{
               
               if(isTokenBearer(data) && service.verifiPrincipalToken(data.substring(7)))
-              {
+              { 
+
                 String email = service.getPrincipalhEmail(data.substring(7));
                 User user = (User) userService.loadUserByUsername(email);
                 var auth = new UsernamePasswordAuthenticationToken(user.getUsername(),
@@ -63,7 +64,9 @@ public class MiddlewareFiler extends OncePerRequestFilter
     protected boolean shouldNotFilter(HttpServletRequest request) 
     {
         return request.getRequestURI().contains("auth") ||
-               request.getRequestURI().contains("home")  ;
+               request.getRequestURI().contains("home") ||
+               request.getRequestURI().contains("doc")  ||
+               request.getRequestURI().contains("v3");
     } 
     
     private Boolean isTokenBearer(String header)

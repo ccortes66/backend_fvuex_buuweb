@@ -19,3 +19,16 @@ gg:
     templateLocation: src/main/resources/templates
     templateSuffix: .jte
     developmentMode: true
+
+springdoc:
+  packagesToScan: com.vuex.example.vuex.controller
+ 
+  api-docs:
+    enabled: true
+  
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+  
+
+  

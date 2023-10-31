@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vuex.example.vuex.persistences.DTO.Links.RegisterLink;
 import com.vuex.example.vuex.service.LinkService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class RedirectController 
 {  
     private final LinkService service;

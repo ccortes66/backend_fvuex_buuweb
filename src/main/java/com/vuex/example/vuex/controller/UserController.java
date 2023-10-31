@@ -10,12 +10,14 @@ import com.vuex.example.vuex.persistences.DTO.User.ShowUser;
 import com.vuex.example.vuex.service.TokenService;
 import com.vuex.example.vuex.service.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class UserController 
 {   
     private final UserService service;

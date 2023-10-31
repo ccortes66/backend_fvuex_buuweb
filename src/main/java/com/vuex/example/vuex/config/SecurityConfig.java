@@ -46,6 +46,8 @@ public class SecurityConfig
                                                    .requestMatchers("/auth/**").permitAll()
                                                    .requestMatchers("/render/**").permitAll()
                                                    .requestMatchers("/user/**").permitAll()
+                                                   .requestMatchers("/doc/**").permitAll()
+                                                   .requestMatchers("/v3/**").permitAll()
                                                    .anyRequest()
                                                    .authenticated())
 
@@ -71,7 +73,7 @@ public class SecurityConfig
    public CorsConfigurationSource corsConfigurationSource()
    {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(List.of(System.getenv("ORIGIN_1"),System.getenv("ORIGIN_2"))); 
+      configuration.setAllowedOrigins(List.of("*")); 
       configuration.setAllowedMethods(List.of("*"));
       configuration.setAllowedHeaders(List.of("*"));
       var source = new UrlBasedCorsConfigurationSource();

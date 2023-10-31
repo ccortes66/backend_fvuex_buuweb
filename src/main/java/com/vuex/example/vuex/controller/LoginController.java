@@ -55,7 +55,6 @@ public class LoginController
     @GetMapping("/refesh")
     public ResponseEntity<TokenResponse> woAmI(@CookieValue(name = "refeshToken") String token)
     {   
-        System.out.println(token);
         return ResponseEntity.ok(tokenService.createPrincipaltoken(token));
         
     }
