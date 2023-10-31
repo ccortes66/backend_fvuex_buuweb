@@ -2,7 +2,7 @@ package com.vuex.example.vuex.persistences.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.mongodb.repository.Query;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.vuex.example.vuex.persistences.document.LinkDocument;
