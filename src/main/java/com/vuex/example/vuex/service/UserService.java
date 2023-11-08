@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService
     public ShowUser registerUser(RegisterUser registerUser)
     {  
         if(!registerUser.password().equals(registerUser.reepasword())) 
-           { throw new IllegalArgumentException("contraeñas no coinciden"); }
+           { throw new IllegalArgumentException("contraseñas no coinciden"); }
         
         repository.findById(registerUser.email())
                 .ifPresent((data) -> { throw new IllegalArgumentException("usuario ya existe"); });

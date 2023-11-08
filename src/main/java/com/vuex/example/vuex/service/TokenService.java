@@ -30,7 +30,7 @@ public class TokenService
       manager.authenticate(login);
       return TokenHelper.createToken(new CreateToken(user.email(), 
                                                      refeshAlgorithm, 
-                                                     Duration.ofDays(30), 
+                                                     Duration.ofMinutes(15), 
                                                      "refersh token"));
    }
 

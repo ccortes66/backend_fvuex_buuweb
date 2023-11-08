@@ -2,6 +2,7 @@ package com.vuex.example.vuex.controller;
 
 import java.time.Duration;
 
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -45,11 +46,14 @@ public class LoginController
                                 .domain("localhost")
                                 .secure(false)
                                 .httpOnly(true)
-                                .maxAge(Duration.ofDays(30))
+                                .maxAge(Duration.ofMinutes(15))
                                 .build();
+
         return ResponseEntity.ok()
                              .header(HttpHeaders.SET_COOKIE, cookie.toString())
                              .body("Refresh Generate");
+        
+
     }
 
     @GetMapping("/refesh")
@@ -58,6 +62,7 @@ public class LoginController
         return ResponseEntity.ok(tokenService.createPrincipaltoken(token));
         
     }
+    
 
     @GetMapping("/logout")
     public ResponseEntity<Void> logoutRefreshToken()

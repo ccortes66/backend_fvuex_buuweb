@@ -1,12 +1,14 @@
 package com.vuex.example.vuex.persistences.DTO.User;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record RegisterUser(
     @NotBlank
-    @Email
+    //email validator
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+             message = "email no válido"  )
     String email,
     @Size(min = 8, max = 20)
     String password,

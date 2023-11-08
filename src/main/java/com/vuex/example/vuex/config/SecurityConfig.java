@@ -73,9 +73,11 @@ public class SecurityConfig
    public CorsConfigurationSource corsConfigurationSource()
    {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(List.of("*")); 
+      //configuration.setAllowedOrigins(List.of("http://localhost:9000/","localhost")); 
+      configuration.setAllowedOrigins(List.of("http://localhost:9000/","http://127.0.0.1:5500/")); 
       configuration.setAllowedMethods(List.of("*"));
       configuration.setAllowedHeaders(List.of("*"));
+      configuration.setAllowCredentials(true);
       var source = new UrlBasedCorsConfigurationSource();
       source.registerCorsConfiguration("/**", configuration);
       return source;

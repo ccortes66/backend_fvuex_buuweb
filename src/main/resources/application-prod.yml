@@ -18,3 +18,14 @@ gg:
   jte:
     developmentMode: false
     usePrecompiledTemplates: true
+
+
+springdoc:
+  packagesToScan: com.vuex.example.vuex.controller
+ 
+  api-docs:
+    enabled: true
+  
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html

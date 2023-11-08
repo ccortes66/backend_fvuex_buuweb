@@ -6,8 +6,10 @@ import java.util.NoSuchElementException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingRequestCookieException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -54,6 +56,19 @@ public class CustomHandlerException
    {
      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponses("404", ex.getMessage()));
    }
+   
+   @ExceptionHandler(InternalAuthenticationServiceException.class)
+   public ResponseEntity<ErrorResponses> onBadLogin403()
+   {
+       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponses("401", "Email o password Erroneos"));
+   } 
+
+   @ExceptionHandler(MissingRequestCookieException.class)
+   public ResponseEntity<ErrorResponses> onMissingCookie400()
+   {
+      return ResponseEntity.badRequest().body(new ErrorResponses("400", "missing cookie"));
+   }
+  
 
 
 }
