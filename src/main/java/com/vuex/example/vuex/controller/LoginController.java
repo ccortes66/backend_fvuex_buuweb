@@ -42,7 +42,7 @@ public class LoginController
     public ResponseEntity<String> loginUser(@RequestBody @Valid LoginUser user)
     {   
         ResponseCookie cookie = ResponseCookie.from("refeshToken", tokenService.createRefreshtoken(user))
-                                .secure(false)
+                                .secure(true)
                                 .httpOnly(true)
                                 .maxAge(Duration.ofMinutes(15))
                                 .sameSite("none")
@@ -67,7 +67,7 @@ public class LoginController
     public ResponseEntity<Void> logoutRefreshToken()
     {   
         ResponseCookie deleteCookie = ResponseCookie.from("refeshToken", "")
-                                        .secure(false)
+                                        .secure(true)
                                         .httpOnly(true)
                                         .maxAge(0)
                                         .sameSite("none")
