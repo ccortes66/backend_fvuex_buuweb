@@ -74,7 +74,7 @@ public class SecurityConfig
    {
       CorsConfiguration configuration = new CorsConfiguration();
       //configuration.setAllowedOrigins(List.of("http://localhost:9000/","localhost")); 
-      configuration.setAllowedOrigins(List.of("http://localhost:9000/","https://shortedlinkbuueb.onrender.com","https://jolly-wisp-b0b44b.netlify.app/")); 
+      configuration.setAllowedOrigins(List.of("http://localhost:9000/",System.getenv("ORIGIN_FRONTED"),System.getenv("URL_HOST"))); 
       configuration.setAllowedMethods(List.of("*"));
       configuration.setAllowedHeaders(List.of("*"));
       configuration.setAllowCredentials(true);

@@ -43,7 +43,7 @@ public class LoginController
     {   
         ResponseCookie cookie = ResponseCookie.from("refeshToken", tokenService.createRefreshtoken(user))
                                 .path("/")
-                                .domain("localhost")
+                                .domain(System.getenv("URL_HOST"))
                                 .secure(false)
                                 .httpOnly(true)
                                 .maxAge(Duration.ofMinutes(15))
@@ -69,7 +69,7 @@ public class LoginController
     {   
         ResponseCookie deleteCookie = ResponseCookie.from("refeshToken", "")
                                         .path("/")
-                                        .domain("localhost")
+                                        .domain(System.getenv("URL_HOST"))
                                         .secure(false)
                                         .httpOnly(true)
                                         .maxAge(0)
