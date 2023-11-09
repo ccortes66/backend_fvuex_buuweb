@@ -45,6 +45,7 @@ public class LoginController
                                 .secure(false)
                                 .httpOnly(true)
                                 .maxAge(Duration.ofMinutes(15))
+                                .sameSite("none")
                                 .build();
 
         return ResponseEntity.ok()
@@ -69,6 +70,7 @@ public class LoginController
                                         .secure(false)
                                         .httpOnly(true)
                                         .maxAge(0)
+                                        .sameSite("none")
                                         .build();
         return ResponseEntity.ok()
                              .header(HttpHeaders.SET_COOKIE, deleteCookie.toString())
